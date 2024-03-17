@@ -2,6 +2,9 @@ import javax.swing.*;
 
 public class Resume {
     private JPanel main;
+    private JPanel main2;
+    private JPanel main3;
+
     Resume()
     {
 
