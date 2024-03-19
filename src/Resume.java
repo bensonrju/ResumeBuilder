@@ -10,7 +10,7 @@ public class Resume {
 
     }
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Calculator");
+        JFrame frame = new JFrame("Resume Builder");
         frame.setContentPane((new Resume().main));
         frame.setBounds(200,200,500,500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
