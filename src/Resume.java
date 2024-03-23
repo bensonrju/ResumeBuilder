@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
+import java.io.IOException;
+
 
 public class Resume {
     private JPanel main;
@@ -26,85 +29,106 @@ public class Resume {
     private JButton nextButton1;
     private JButton backButton1;
     private JPanel skills;
-    private JTextArea textArea1;
     private JButton nextButton3;
     private JButton backButton3;
-    private JPanel certifications;
-    private JTextArea textArea2;
+    private JPanel cert;
     private JButton finishButton;
     private JButton backButton4;
     private JPanel finalPanel;
+    private JTabbedPane certifications;
+    private JEditorPane editorPane1;
+    private JTabbedPane personal;
+    private JTabbedPane education;
+    private JTabbedPane work;
+    private JTabbedPane skill;
+    private JEditorPane personal_prev;
+    private JEditorPane cert_prev;
+    private JEditorPane education_prev;
+    private JEditorPane work_prev;
+    private JEditorPane skil_prev;
+    private JEditorPane editorPane2;
+    private JEditorPane editorPane3;
+    private JLabel Skills;
 
     Resume()
     {
+        editorPane1.setEditable(false);
+        URL url= Resume.class.getResource("test.htm");
+
+            try {
+                editorPane1.setPage(url);
+            } catch(IOException e) {
+                editorPane1.setContentType("text/html");
+                editorPane1.setText("<html>Page not found.</html>");
+            }
 
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Start.setVisible(false);
-                Personal.setVisible(true);
+                personal.setVisible(true);
             }
         });
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Start.setVisible(true);
-                Personal.setVisible(false);
+                personal.setVisible(false);
             }
         });
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Personal.setVisible(false);
-                Education.setVisible(true);
+                personal.setVisible(false);
+                education.setVisible(true);
             }
         });
         backButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Personal.setVisible(true);
-                Education.setVisible(false);
+                personal.setVisible(true);
+                education.setVisible(false);
             }
         });
         nextButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Education.setVisible(false);
-                Work.setVisible(true);
+                education.setVisible(false);
+                work.setVisible(true);
             }
         });
         backButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Education.setVisible(true);
-                Work.setVisible(false);
+                education.setVisible(true);
+                work.setVisible(false);
             }
         });
         nextButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Work.setVisible(false);
-                skills.setVisible(true);
+                work.setVisible(false);
+                skill.setVisible(true);
             }
         });
         backButton3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Work.setVisible(true);
-                skills.setVisible(false);
+                work.setVisible(true);
+                skill.setVisible(false);
             }
         });
         nextButton3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 certifications.setVisible(true);
-                skills.setVisible(false);
+                skill.setVisible(false);
             }
         });
         backButton4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                skills.setVisible(true);
+                skill.setVisible(true);
                 certifications.setVisible(false);
             }
         });
@@ -121,6 +145,54 @@ public class Resume {
         frame.setContentPane((new Resume().main));
         frame.setBounds(200,200,500,500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // menu Bar code
+        JMenuBar JMenuBar =new JMenuBar();
+// 1- Menu File
+        JMenu menu1 = new JMenu("File");
+// Menu Item
+        JMenuItem open =new JMenuItem( "Open");
+        JMenuItem save =new JMenuItem( "Save");
+// add items into menu File
+        menu1.add(open);
+        menu1.add(save) ;
+// add Menu into menu Bar
+        JMenuBar.add(menu1) ;
+// Menu Edit
+        JMenu menu2 =new JMenu( "Edit");
+// Menu Item
+        JMenuItem cut =new JMenuItem( "Cut");
+        JMenuItem copy =new JMenuItem( "Copy");
+        JMenuItem paste =new JMenuItem( "Paste");
+// add items into menu Edit
+        menu2.add (cut) ;
+        menu2.add (copy) ;
+        menu2.add (paste) ;
+// add Menu into menu Bar
+        JMenuBar.add (menu2) ;
+        JMenu menu3 =new JMenu( "View");
+
+// Menu Item
+        JMenuItem param =new JMenuItem( "parameters info");
+        JMenuItem type =new JMenuItem( "Types Info");
+// add items into menu Edit
+        menu3.add (param) ;
+        menu3.add (type) ;
+// add Menu into menu Bar
+        JMenuBar.add (menu3) ;
+        JMenu menu4 =new JMenu( "Help");
+// Menu Item
+        JMenuItem register =new JMenuItem( "Register");
+        JMenuItem about =new JMenuItem( "About");
+
+        JMenuItem info =new JMenuItem( "Info");
+// add items into menu Edit
+        menu4.add (register) ;
+        menu4.add (about) ;
+        menu4.add (info) ;
+// add Menu into menu Bar
+        JMenuBar.add (menu4) ;
+// Setting into frame
+        frame.setJMenuBar (JMenuBar) ;
         frame.setSize(500,500);
         frame.setVisible(true);
     }
