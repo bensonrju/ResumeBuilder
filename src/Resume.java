@@ -13,9 +13,9 @@ public class Resume {
     private JPanel Work;
     private JButton startButton;
     private JTextField nameField;
-    private JPasswordField passwordField1;
-    private JTextField textField2;
-    private JTextField textField3;
+    private JTextField addressField;
+    private JTextField phoneField;
+    private JTextField emailField;
     private JButton nextButton;
     private JButton backButton;
     private JTextField textField4;
