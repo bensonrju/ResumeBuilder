@@ -155,21 +155,29 @@ public class Resume {
         mainFrame.setContentPane((new Resume().mainPanel));
         mainFrame.setBounds(200,200,500,500);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         // menu Bar code
         JMenuBar JMenuBar =new JMenuBar();
-// 1- Menu File
+
+        // 1- Menu File
         JMenu fileMenu = new JMenu("File");
-// Menu Item
+
+
+        // Menu Item
         JMenuItem open =new JMenuItem( "Open");
         JMenuItem save =new JMenuItem( "Save");
-// add items into menu File
+
+        // add items into menu File
         fileMenu.add(open);
-        fileMenu.add(save) ;
-// add Menu into menu Bar
+        fileMenu.add(save);
+
+        // add Menu into menu Bar
         JMenuBar.add(fileMenu) ;
-// Menu Edit
+
+        // Menu Edit
         JMenu editMenu =new JMenu( "Edit");
-// Menu Item
+
+        // Menu Item
         JMenuItem cut =new JMenuItem( "Cut");
         JMenuItem copy =new JMenuItem( "Copy");
         JMenuItem paste =new JMenuItem( "Paste");
