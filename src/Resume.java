@@ -153,57 +153,74 @@ public class Resume {
 
     public static JMenuBar initMenuBar() {
 
-        // menu Bar code
+    // Initialize Menu Bar
         JMenuBar topMenuBar =new JMenuBar();
 
-        // 1- File Sub-Menu
+
+    // 1- File Sub-Menu
         JMenu fileMenu = new JMenu("File");
 
-        // Initialize File Menu Items
-        JMenuItem open =new JMenuItem( "Open");
-        JMenuItem save =new JMenuItem( "Save");
-        // add items into menu File
+        // Initialize File Sub-Menu Items
+        JMenuItem open =new JMenuItem("Open");
+        JMenuItem save =new JMenuItem("Save");
+
+        // Add Items to File Sub-Menu
         fileMenu.add(open);
         fileMenu.add(save);
-        // add Menu into menu Bar
+
+        // Add File Sub-Menu into Top Menu Bar
         topMenuBar.add(fileMenu);
 
-        // 2 - Edit Sub-Menu
-        JMenu editMenu =new JMenu( "Edit");
 
-        // Menu Item
-        JMenuItem cut =new JMenuItem( "Cut");
-        JMenuItem copy =new JMenuItem( "Copy");
-        JMenuItem paste =new JMenuItem( "Paste");
-// add items into menu Edit
-        editMenu.add (cut) ;
-        editMenu.add (copy) ;
-        editMenu.add (paste) ;
-// add Menu into menu Bar
-        topMenuBar.add (editMenu) ;
-        JMenu viewMenu =new JMenu( "View");
+    // 2 - Edit Sub-Menu
+        JMenu editMenu =new JMenu("Edit");
 
-// Menu Item
-        JMenuItem param =new JMenuItem( "parameters info");
-        JMenuItem type =new JMenuItem( "Types Info");
-// add items into menu Edit
-        viewMenu.add (param) ;
-        viewMenu.add (type) ;
-// add Menu into menu Bar
-        topMenuBar.add (viewMenu) ;
-        JMenu helpMenu =new JMenu( "Help");
-// Menu Item
-        JMenuItem register =new JMenuItem( "Register");
-        JMenuItem about =new JMenuItem( "About");
+        // Initialize Edit Sub-Menu Items
+        JMenuItem cut =new JMenuItem("Cut");
+        JMenuItem copy =new JMenuItem("Copy");
+        JMenuItem paste =new JMenuItem("Paste");
 
-        JMenuItem info =new JMenuItem( "Info");
-// add items into menu Edit
-        helpMenu.add (register) ;
-        helpMenu.add (about) ;
-        helpMenu.add (info) ;
-// add Menu into menu Bar
+        // Add Items to Edit Sub-Menu
+        editMenu.add(cut);
+        editMenu.add(copy);
+        editMenu.add(paste);
+
+        // Add Edit Sub-Menu into Top Menu Bar
+        topMenuBar.add(editMenu) ;
+
+
+    // 3 - View Sub-Menu
+        JMenu viewMenu =new JMenu("View");
+
+        // Initialize Sub-View Menu Items
+        JMenuItem param =new JMenuItem("Parameters Info");
+        JMenuItem type =new JMenuItem("Types Info");
+
+        // Add Items to View Sub-Menu
+        viewMenu.add(param);
+        viewMenu.add(type);
+
+        // Add View Sub-Menu into Top Menu Bar
+        topMenuBar.add(viewMenu);
+
+
+    // 4 - Help Sub-Menu
+        JMenu helpMenu =new JMenu("Help");
+
+        // Initialize Help Sub-Menu Items
+        JMenuItem register =new JMenuItem("Register");
+        JMenuItem about =new JMenuItem("About");
+        JMenuItem info =new JMenuItem("Info");
+
+        // Add Items to Help Sub-Menu
+        helpMenu.add(register);
+        helpMenu.add(about);
+        helpMenu.add(info);
+
+        // Add View Sub-Menu into Top Menu Bar
         topMenuBar.add (helpMenu) ;
 
+        // Return MenuBar object
         return topMenuBar;
     }
 
@@ -223,7 +240,7 @@ public class Resume {
 
         JMenuBar topMenuBar = initMenuBar();
 
-        // Setting into frame
+        // Adding the topMenuBar to our mainFrame
         mainFrame.setJMenuBar(topMenuBar);
 
     }
