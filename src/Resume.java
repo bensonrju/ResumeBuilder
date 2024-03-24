@@ -150,31 +150,25 @@ public class Resume {
             }
         });
     }
-    public static void main(String[] args) {
-        JFrame mainFrame = new JFrame("Resume Builder");
-        mainFrame.setContentPane((new Resume().mainPanel));
-        mainFrame.setBounds(200,200,500,500);
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    public static JMenuBar initMenuBar() {
 
         // menu Bar code
-        JMenuBar JMenuBar =new JMenuBar();
+        JMenuBar topMenuBar =new JMenuBar();
 
-        // 1- Menu File
+        // 1- File Sub-Menu
         JMenu fileMenu = new JMenu("File");
 
-
-        // Menu Item
+        // Initialize File Menu Items
         JMenuItem open =new JMenuItem( "Open");
         JMenuItem save =new JMenuItem( "Save");
-
         // add items into menu File
         fileMenu.add(open);
         fileMenu.add(save);
-
         // add Menu into menu Bar
-        JMenuBar.add(fileMenu) ;
+        topMenuBar.add(fileMenu);
 
-        // Menu Edit
+        // 2 - Edit Sub-Menu
         JMenu editMenu =new JMenu( "Edit");
 
         // Menu Item
@@ -186,7 +180,7 @@ public class Resume {
         editMenu.add (copy) ;
         editMenu.add (paste) ;
 // add Menu into menu Bar
-        JMenuBar.add (editMenu) ;
+        topMenuBar.add (editMenu) ;
         JMenu viewMenu =new JMenu( "View");
 
 // Menu Item
@@ -196,7 +190,7 @@ public class Resume {
         viewMenu.add (param) ;
         viewMenu.add (type) ;
 // add Menu into menu Bar
-        JMenuBar.add (viewMenu) ;
+        topMenuBar.add (viewMenu) ;
         JMenu helpMenu =new JMenu( "Help");
 // Menu Item
         JMenuItem register =new JMenuItem( "Register");
@@ -208,10 +202,29 @@ public class Resume {
         helpMenu.add (about) ;
         helpMenu.add (info) ;
 // add Menu into menu Bar
-        JMenuBar.add (helpMenu) ;
-// Setting into frame
-        mainFrame.setJMenuBar (JMenuBar) ;
-        mainFrame.setSize(500,500);
-        mainFrame.setVisible(true);
+        topMenuBar.add (helpMenu) ;
+
+        return topMenuBar;
+    }
+
+    public static JFrame initMainFrame() {
+        JFrame mf = new JFrame("Resume Builder");
+        mf.setContentPane((new Resume().mainPanel));
+        mf.setBounds(200,200,500,500);
+        mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mf.setSize(500,500);
+        mf.setVisible(true);
+
+        return mf;
+    }
+
+    public static void main(String[] args) {
+        JFrame mainFrame = initMainFrame();
+
+        JMenuBar topMenuBar = initMenuBar();
+
+        // Setting into frame
+        mainFrame.setJMenuBar(topMenuBar);
+
     }
 }
