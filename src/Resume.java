@@ -6,13 +6,13 @@ import java.io.IOException;
 
 
 public class Resume {
-    private JPanel main;
-    private JPanel Start;
-    private JPanel Personal;
-    private JPanel Education;
+    private JPanel mainPanel;
+    private JPanel startPanel;
+    private JPanel personalPanel;
+    private JPanel educationPanel;
     private JPanel Work;
     private JButton startButton;
-    private JTextField textField1;
+    private JTextField nameField;
     private JPasswordField passwordField1;
     private JTextField textField2;
     private JTextField textField3;
@@ -35,12 +35,12 @@ public class Resume {
     private JButton finishButton;
     private JButton backButton4;
     private JPanel finalPanel;
-    private JTabbedPane certifications;
+    private JTabbedPane certPane;
     private JEditorPane editorPane1;
-    private JTabbedPane personal;
-    private JTabbedPane education;
-    private JTabbedPane work;
-    private JTabbedPane skill;
+    private JTabbedPane personalPane;
+    private JTabbedPane educationPane;
+    private JTabbedPane workPane;
+    private JTabbedPane skillsPane;
     private JEditorPane personal_prev;
     private JEditorPane cert_prev;
     private JEditorPane education_prev;
@@ -49,6 +49,14 @@ public class Resume {
     private JEditorPane editorPane2;
     private JEditorPane editorPane3;
     private JLabel Skills;
+    private JLabel titleLabel;
+    private JPanel pers_prevPanel;
+    private JPanel edu_prevPanel;
+    private JPanel work_prevPanel;
+    private JPanel skills_prevPanel;
+    private JPanel cert_prevPanel;
+    private JLabel genMsgLabel;
+    private JScrollPane resOutPane;
 
     Resume()
     {
@@ -65,84 +73,84 @@ public class Resume {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Start.setVisible(false);
-                personal.setVisible(true);
+                startPanel.setVisible(false);
+                personalPane.setVisible(true);
             }
         });
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Start.setVisible(true);
-                personal.setVisible(false);
+                startPanel.setVisible(true);
+                personalPane.setVisible(false);
             }
         });
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                personal.setVisible(false);
-                education.setVisible(true);
+                personalPane.setVisible(false);
+                educationPane.setVisible(true);
             }
         });
         backButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                personal.setVisible(true);
-                education.setVisible(false);
+                personalPane.setVisible(true);
+                educationPane.setVisible(false);
             }
         });
         nextButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                education.setVisible(false);
-                work.setVisible(true);
+                educationPane.setVisible(false);
+                workPane.setVisible(true);
             }
         });
         backButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                education.setVisible(true);
-                work.setVisible(false);
+                educationPane.setVisible(true);
+                workPane.setVisible(false);
             }
         });
         nextButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                work.setVisible(false);
-                skill.setVisible(true);
+                workPane.setVisible(false);
+                skillsPane.setVisible(true);
             }
         });
         backButton3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                work.setVisible(true);
-                skill.setVisible(false);
+                workPane.setVisible(true);
+                skillsPane.setVisible(false);
             }
         });
         nextButton3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                certifications.setVisible(true);
-                skill.setVisible(false);
+                certPane.setVisible(true);
+                skillsPane.setVisible(false);
             }
         });
         backButton4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                skill.setVisible(true);
-                certifications.setVisible(false);
+                skillsPane.setVisible(true);
+                certPane.setVisible(false);
             }
         });
         finishButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                certifications.setVisible(false);
+                certPane.setVisible(false);
                 finalPanel.setVisible(true);
             }
         });
     }
     public static void main(String[] args) {
         JFrame frame = new JFrame("Resume Builder");
-        frame.setContentPane((new Resume().main));
+        frame.setContentPane((new Resume().mainPanel));
         frame.setBounds(200,200,500,500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // menu Bar code
