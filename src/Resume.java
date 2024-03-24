@@ -16,24 +16,24 @@ public class Resume {
     private JTextField addressField;
     private JTextField phoneField;
     private JTextField emailField;
-    private JButton nextButton;
-    private JButton backButton;
-    private JTextField textField4;
-    private JTextField textField5;
-    private JTextField textField6;
-    private JTextField textField7;
-    private JTextField textField8;
-    private JTextField textField9;
-    private JButton nextButton2;
-    private JButton backButton2;
-    private JButton nextButton1;
-    private JButton backButton1;
+    private JButton pers_nextButton;
+    private JButton pers_backButton;
+    private JTextField uniField;
+    private JTextField degreeField;
+    private JTextField gpaField;
+    private JTextField job1Field;
+    private JTextField job2Field;
+    private JTextField job3Field;
+    private JButton work_nextButton;
+    private JButton work_backButton;
+    private JButton edu_nextButton;
+    private JButton edu_backButton;
     private JPanel skills;
-    private JButton nextButton3;
-    private JButton backButton3;
+    private JButton skills_nextButton;
+    private JButton skills_backButton;
     private JPanel cert;
     private JButton finishButton;
-    private JButton backButton4;
+    private JButton cert_backButton;
     private JPanel finalPanel;
     private JTabbedPane certPane;
     private JEditorPane editorPane1;
@@ -57,6 +57,8 @@ public class Resume {
     private JPanel cert_prevPanel;
     private JLabel genMsgLabel;
     private JScrollPane resOutPane;
+    private JScrollPane skillsScrollPane;
+    private JScrollPane certScrollPane;
 
     Resume()
     {
@@ -77,63 +79,63 @@ public class Resume {
                 personalPane.setVisible(true);
             }
         });
-        backButton.addActionListener(new ActionListener() {
+        pers_backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 startPanel.setVisible(true);
                 personalPane.setVisible(false);
             }
         });
-        nextButton.addActionListener(new ActionListener() {
+        pers_nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 personalPane.setVisible(false);
                 educationPane.setVisible(true);
             }
         });
-        backButton1.addActionListener(new ActionListener() {
+        edu_backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 personalPane.setVisible(true);
                 educationPane.setVisible(false);
             }
         });
-        nextButton1.addActionListener(new ActionListener() {
+        edu_nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 educationPane.setVisible(false);
                 workPane.setVisible(true);
             }
         });
-        backButton2.addActionListener(new ActionListener() {
+        work_backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 educationPane.setVisible(true);
                 workPane.setVisible(false);
             }
         });
-        nextButton2.addActionListener(new ActionListener() {
+        work_nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 workPane.setVisible(false);
                 skillsPane.setVisible(true);
             }
         });
-        backButton3.addActionListener(new ActionListener() {
+        skills_backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 workPane.setVisible(true);
                 skillsPane.setVisible(false);
             }
         });
-        nextButton3.addActionListener(new ActionListener() {
+        skills_nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 certPane.setVisible(true);
                 skillsPane.setVisible(false);
             }
         });
-        backButton4.addActionListener(new ActionListener() {
+        cert_backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 skillsPane.setVisible(true);
@@ -149,59 +151,59 @@ public class Resume {
         });
     }
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Resume Builder");
-        frame.setContentPane((new Resume().mainPanel));
-        frame.setBounds(200,200,500,500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame mainFrame = new JFrame("Resume Builder");
+        mainFrame.setContentPane((new Resume().mainPanel));
+        mainFrame.setBounds(200,200,500,500);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // menu Bar code
         JMenuBar JMenuBar =new JMenuBar();
 // 1- Menu File
-        JMenu menu1 = new JMenu("File");
+        JMenu fileMenu = new JMenu("File");
 // Menu Item
         JMenuItem open =new JMenuItem( "Open");
         JMenuItem save =new JMenuItem( "Save");
 // add items into menu File
-        menu1.add(open);
-        menu1.add(save) ;
+        fileMenu.add(open);
+        fileMenu.add(save) ;
 // add Menu into menu Bar
-        JMenuBar.add(menu1) ;
+        JMenuBar.add(fileMenu) ;
 // Menu Edit
-        JMenu menu2 =new JMenu( "Edit");
+        JMenu editMenu =new JMenu( "Edit");
 // Menu Item
         JMenuItem cut =new JMenuItem( "Cut");
         JMenuItem copy =new JMenuItem( "Copy");
         JMenuItem paste =new JMenuItem( "Paste");
 // add items into menu Edit
-        menu2.add (cut) ;
-        menu2.add (copy) ;
-        menu2.add (paste) ;
+        editMenu.add (cut) ;
+        editMenu.add (copy) ;
+        editMenu.add (paste) ;
 // add Menu into menu Bar
-        JMenuBar.add (menu2) ;
-        JMenu menu3 =new JMenu( "View");
+        JMenuBar.add (editMenu) ;
+        JMenu viewMenu =new JMenu( "View");
 
 // Menu Item
         JMenuItem param =new JMenuItem( "parameters info");
         JMenuItem type =new JMenuItem( "Types Info");
 // add items into menu Edit
-        menu3.add (param) ;
-        menu3.add (type) ;
+        viewMenu.add (param) ;
+        viewMenu.add (type) ;
 // add Menu into menu Bar
-        JMenuBar.add (menu3) ;
-        JMenu menu4 =new JMenu( "Help");
+        JMenuBar.add (viewMenu) ;
+        JMenu helpMenu =new JMenu( "Help");
 // Menu Item
         JMenuItem register =new JMenuItem( "Register");
         JMenuItem about =new JMenuItem( "About");
 
         JMenuItem info =new JMenuItem( "Info");
 // add items into menu Edit
-        menu4.add (register) ;
-        menu4.add (about) ;
-        menu4.add (info) ;
+        helpMenu.add (register) ;
+        helpMenu.add (about) ;
+        helpMenu.add (info) ;
 // add Menu into menu Bar
-        JMenuBar.add (menu4) ;
+        JMenuBar.add (helpMenu) ;
 // Setting into frame
-        frame.setJMenuBar (JMenuBar) ;
-        frame.setSize(500,500);
-        frame.setVisible(true);
+        mainFrame.setJMenuBar (JMenuBar) ;
+        mainFrame.setSize(500,500);
+        mainFrame.setVisible(true);
     }
 }

@@ -124,7 +124,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="1d825" class="javax.swing.JButton" binding="nextButton" default-binding="true">
+              <component id="1d825" class="javax.swing.JButton" binding="pers_nextButton">
                 <constraints>
                   <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -132,7 +132,7 @@
                   <text value="Next"/>
                 </properties>
               </component>
-              <component id="596d1" class="javax.swing.JButton" binding="backButton" default-binding="true">
+              <component id="596d1" class="javax.swing.JButton" binding="pers_backButton">
                 <constraints>
                   <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -198,7 +198,7 @@
                   <text value="University"/>
                 </properties>
               </component>
-              <component id="3066d" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+              <component id="3066d" class="javax.swing.JTextField" binding="uniField">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -214,7 +214,7 @@
                   <text value="Degree"/>
                 </properties>
               </component>
-              <component id="87b11" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+              <component id="87b11" class="javax.swing.JTextField" binding="degreeField">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -227,10 +227,10 @@
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="GPA"/>
                 </properties>
               </component>
-              <component id="995c1" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+              <component id="995c1" class="javax.swing.JTextField" binding="gpaField">
                 <constraints>
                   <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -238,7 +238,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="8531d" class="javax.swing.JButton" binding="nextButton1" default-binding="true">
+              <component id="8531d" class="javax.swing.JButton" binding="edu_nextButton">
                 <constraints>
                   <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -246,7 +246,7 @@
                   <text value="Next"/>
                 </properties>
               </component>
-              <component id="1bbd4" class="javax.swing.JButton" binding="backButton1" default-binding="true">
+              <component id="1bbd4" class="javax.swing.JButton" binding="edu_backButton">
                 <constraints>
                   <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -312,7 +312,7 @@
                   <text value="Job #1"/>
                 </properties>
               </component>
-              <component id="1f364" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+              <component id="1f364" class="javax.swing.JTextField" binding="job1Field">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -328,7 +328,7 @@
                   <text value="Job #2"/>
                 </properties>
               </component>
-              <component id="50bf3" class="javax.swing.JTextField" binding="textField8" default-binding="true">
+              <component id="50bf3" class="javax.swing.JTextField" binding="job2Field">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -344,7 +344,7 @@
                   <text value="Job #3"/>
                 </properties>
               </component>
-              <component id="18abf" class="javax.swing.JTextField" binding="textField9" default-binding="true">
+              <component id="18abf" class="javax.swing.JTextField" binding="job3Field">
                 <constraints>
                   <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -352,7 +352,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="58683" class="javax.swing.JButton" binding="nextButton2" default-binding="true">
+              <component id="58683" class="javax.swing.JButton" binding="work_nextButton">
                 <constraints>
                   <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -360,7 +360,7 @@
                   <text value="Next"/>
                 </properties>
               </component>
-              <component id="89dd6" class="javax.swing.JButton" binding="backButton2" default-binding="true">
+              <component id="89dd6" class="javax.swing.JButton" binding="work_backButton">
                 <constraints>
                   <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -418,7 +418,7 @@
                   <text value="Skills"/>
                 </properties>
               </component>
-              <scrollpane id="8770b">
+              <scrollpane id="8770b" binding="skillsScrollPane">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -431,7 +431,7 @@
                   </component>
                 </children>
               </scrollpane>
-              <component id="72023" class="javax.swing.JButton" binding="backButton3">
+              <component id="72023" class="javax.swing.JButton" binding="skills_backButton">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -439,7 +439,7 @@
                   <text value="Back"/>
                 </properties>
               </component>
-              <component id="af823" class="javax.swing.JButton" binding="nextButton3" default-binding="true">
+              <component id="af823" class="javax.swing.JButton" binding="skills_nextButton">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -497,7 +497,7 @@
                   <text value="Certifications"/>
                 </properties>
               </component>
-              <scrollpane id="caa5f">
+              <scrollpane id="caa5f" binding="certScrollPane">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -510,7 +510,7 @@
                   </component>
                 </children>
               </scrollpane>
-              <component id="8f5d1" class="javax.swing.JButton" binding="backButton4" default-binding="true">
+              <component id="8f5d1" class="javax.swing.JButton" binding="cert_backButton">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
