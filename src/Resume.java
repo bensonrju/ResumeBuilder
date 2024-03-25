@@ -60,18 +60,7 @@ public class Resume {
     private JScrollPane skillsScrollPane;
     private JScrollPane certScrollPane;
 
-    Resume()
-    {
-        editorPane1.setEditable(false);
-        URL url= Resume.class.getResource("test.htm");
-
-            try {
-                editorPane1.setPage(url);
-            } catch(IOException e) {
-                editorPane1.setContentType("text/html");
-                editorPane1.setText("<html>Page not found.</html>");
-            }
-
+    public void InitNavButtons() {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -149,6 +138,21 @@ public class Resume {
                 finalPanel.setVisible(true);
             }
         });
+    }
+
+    Resume() {
+
+        editorPane1.setEditable(false);
+        URL url= Resume.class.getResource("test.htm");
+
+            try {
+                editorPane1.setPage(url);
+            } catch(IOException e) {
+                editorPane1.setContentType("text/html");
+                editorPane1.setText("<html>Page not found.</html>");
+            }
+
+        InitNavButtons();
     }
 
     public static JMenuBar initMenuBar() {
