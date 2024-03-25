@@ -44,8 +44,7 @@ public class Resume {
     private JEditorPane education_prev;
     private JEditorPane work_prev;
     private JEditorPane skil_prev;
-    private JEditorPane editorPane2;
-    private JEditorPane editorPane3;
+    private JEditorPane finished_prev;
     private JLabel Skills;
     private JLabel titleLabel;
     private JPanel pers_prevPanel;
@@ -62,8 +61,27 @@ public class Resume {
     private JButton updateButton2;
     private JButton updateButton3;
     private JButton updateButton4;
+    private JTextField gradDateField;
+    private JTextArea job1desc;
+    private JTextArea job2desc;
+    private JTextArea job3desc;
+    private JTextArea skills_textarea;
+    private JTextArea cert_textarea;
+    private JTextField job1start;
+    private JTextField job1end;
+    private JTextField job2start;
+    private JTextField job2end;
+    private JTextField job3start;
+    private JTextField job3end;
 
     String html_text;
+    String job1descparsed;
+
+    String job2descparsed;
+    String job3descparsed;
+    String skillsparsed;
+    String certparsed;
+
 
 
     public void InitNavButtons() {
@@ -179,7 +197,15 @@ public class Resume {
 
     Resume() {
 
-        editorPane1.setContentType("text/html");
+        //editorPane1.setContentType("text/html");
+        //editorPane1.setContentType("text/html");
+
+        personal_prev.setContentType("text/html");
+        education_prev.setContentType("text/html");
+        work_prev.setContentType("text/html");
+        skil_prev.setContentType("text/html");
+        cert_prev.setContentType("text/html");
+        finished_prev.setContentType("text/html");
         updateHTML();
 
         InitNavButtons();
@@ -188,49 +214,170 @@ public class Resume {
     }
     public void updateHTML()
     {
-       String html_text = "<html>\n" +
+//Check all JtextAreas that need to be parsed to format data correctly
+parseTextArea();
+//String Variables that need to format parsed data
+        String Job1 =   "            <h3>"+job1Field.getText()+"</h3>\n" +
+        "            <p>"+job1start.getText() +"-"+job1end.getText()+"</p>\n" +
+        "            <ul>\n" +
+                            job1descparsed +
+        "            </ul>\n";
+
+        String Job2 =  "            <h3>"+job2Field.getText()+"</h3>\n" +
+                "            <p>"+job2start.getText() +"-"+job2end.getText()+"</p>\n" +
+                "            <ul>\n" +
+                                job2descparsed +
+                "            </ul>\n";
+        String Job3 = "      <h3>"+job3Field.getText()+ "</h3>\n" +
+                "            <p>"+job3start.getText() +"-"+job3end.getText()+"</p>\n" +
+         "            <ul>\n" +
+                            job3descparsed +
+         "            </ul>\n";
+        String skill_html = "        <h2>Skills</h2>\n" + "\n" +
+                "                        <ul>\n" +"\n" +
+                skillsparsed +
+                "                        </ul> ";
+        String cert_html = "        <h2>Certifications</h2>\n" +
+                "        <ul>\n" +
+                certparsed +
+                "        </ul>\n";
+        if(certparsed.isEmpty())
+            cert_html = "";
+        if(skillsparsed.isEmpty())
+            skill_html = "";
+        if(job2Field.getText().isEmpty())
+            Job2 = "";
+        if(job3Field.getText().isEmpty())
+            Job3 = "";
+        //Html Format
+        String html_text = "<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
                 "<head>\n" +
-                "<title>My First HTML Page</title>\n" +
+                "    <meta charset=\"UTF-8\">\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                "    <title>Resume</title>\n" +
                 "</head>\n" +
                 "<body>\n" +
-                "<h1><center>"+ nameField.getText()+"</center></h1>\n" +
-               "<hr>" +
-                "<h2><center>"+ addressField.getText() + "      |       " +
-               phoneField.getText() + "       |       " + emailField.getText() + "</center></h2>" +
-               "<hr>" +
-               "<h2><center>Education</center><h2>" +
+                "      <h1><center>"+nameField.getText()+"</center></h1>\n" +
+                "      <p><center>Email: "+emailField.getText()+" | Phone: "+phoneField.getText()+" | Address: "+addressField.getText()+"</center></p>\n" +
 
-               "<center><table border=\"0\"> \n" +
-               "  <tr> \n" +
-               "    <td>University </td> \n" +
-               "    <td>Degree</td> \n" +
-               "    <td>Major</td>" +
-               "  </tr> \n" +
-               "</table></center> " +
-               "<hr>" +
-               "<h2><center>Experience</center><h2>" +
-               "<center><table border=\"0\"> \n" +
-               "  <tr> \n" +
-               "    <td>Job1 </td> \n" +
-               "    <td>Job description </td> \n" +
-               "  </tr> \n" +
-               "  <tr> \n" +
-               "    <td>Job2 </td> \n" +
-               "    <td>Job description </td> \n" +
-               "  </tr> \n" +
-               "  <tr> \n" +
-               "    <td>Job3 </td> \n" +
-               "    <td>Job description</td> \n" +
-               "  </tr> \n" +
-               "</table></center> " +
-               "<hr>" +
-               "<h2><center>Skills</center><h2>" +
-               "<hr>" +
-               "<h2><center>Certifications</center><h2>" +
+                "    \n" +
+                "    <hr>\n" +
+                "    \n" +
 
-               "</body>\n" +
-               "</html>";
-        editorPane1.setText(html_text);
+                "    \n" +
+                "        <h2>Education</h2>\n" +
+                "        <ul>\n" +
+                "            <li>"+degreeField.getText()+", "+uniField.getText()+", "+gradDateField.getText()+"</li>\n" +
+                "            <li>GPA: "+gpaField.getText()+" </li>\n" +
+                "        </ul>\n" +
+                "    \n" +
+                "        <h2>Work Experience</h2>\n" +
+                Job1 +
+                Job2 +
+                Job3 +
+                "    \n" +
+                skill_html +
+                "    \n" +
+                cert_html +
+                "    \n" +
+                "        <p>References available upon request</p>\n" +
+                "</body>\n" +
+                "</html>";
+        //editorPane1.setText(html_text);
+
+        //Assign new html preview to all preview windows
+        personal_prev.setText(html_text);
+        education_prev.setText(html_text);
+        work_prev.setText(html_text);
+        skil_prev.setText(html_text);
+        cert_prev.setText(html_text);
+        finished_prev.setText(html_text);
+
+
+    }
+    public void parseTextArea()
+    {
+        String[] job1lines = job1desc.getText().split("\\r?\\n");
+
+        // You can now process each line as needed
+        for (String line : job1lines) {
+            System.out.println(line); // For demonstration, we're just printing each line
+        }
+        String temp = "";
+        for(String line: job1lines)
+        {
+         temp = temp + "<li>" + line + "</li>\n";
+        }
+        job1descparsed = temp;
+
+        //Parse job2-------------------------------
+        String[] job2lines = job2desc.getText().split("\\r?\\n");
+
+        // You can now process each line as needed
+        for (String line : job2lines) {
+            System.out.println(line); // For demonstration, we're just printing each line
+        }
+        String temp2 = "";
+        for(String line: job2lines)
+        {
+            temp2 = temp2 + "<li>" + line + "</li>\n";
+        }
+        job2descparsed = temp2;
+
+        //Parse job 3-----------------------------
+        String[] job3lines = job3desc.getText().split("\\r?\\n");
+
+        // You can now process each line as needed
+        for (String line : job3lines) {
+            System.out.println(line); // For demonstration, we're just printing each line
+        }
+        String temp3 = "";
+        for(String line: job3lines)
+        {
+            temp3 = temp3 + "<li>" + line + "</li>\n";
+        }
+        job3descparsed = temp3;
+        //SKILLS ----------------------------
+        String[] skillines = skills_textarea.getText().split("\\r?\\n");
+
+        // You can now process each line as needed
+        for (String line : skillines) {
+            System.out.println(line); // For demonstration, we're just printing each line
+        }
+        String temp4 = "";
+        for(String line: skillines)
+        {
+            temp4 = temp4 + "<li>" + line + "</li>\n";
+        }
+        skillsparsed = temp4;
+        //Certifications
+        String[] certlines = cert_textarea.getText().split("\\r?\\n");
+
+        // You can now process each line as needed
+        for (String line : certlines) {
+            System.out.println(line); // For demonstration, we're just printing each line
+        }
+        String temp5 = "";
+        for(String line: certlines)
+        {
+            temp5 = temp5 + "<li>" + line + "</li>\n";
+        }
+        certparsed = temp5;
+        System.out.println(certparsed);
+        //Disable the skills and cert sections if there is no information
+        if(skillsparsed.equals("<li></li>\n"))
+            skillsparsed = "";
+        if(certparsed.equals("<li></li>\n"))
+            certparsed = "";
+        if(job1descparsed.equals("<li></li>\n"))
+            job1descparsed = "";
+        if(job2descparsed.equals("<li></li>\n"))
+            job2descparsed = "";
+        if(job3descparsed.equals("<li></li>\n"))
+            job3descparsed = "";
+
+
 
     }
 
@@ -312,7 +459,7 @@ public class Resume {
         mf.setContentPane((new Resume().mainPanel));
         mf.setBounds(200,200,500,500);
         mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mf.setSize(500,500);
+        mf.setSize(575,700);
         mf.setVisible(true);
 
         return mf;
