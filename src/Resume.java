@@ -1,8 +1,6 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
-import java.io.IOException;
 
 
 public class Resume {
@@ -59,6 +57,14 @@ public class Resume {
     private JScrollPane resOutPane;
     private JScrollPane skillsScrollPane;
     private JScrollPane certScrollPane;
+    private JButton updateButton;
+    private JButton updateButton1;
+    private JButton updateButton2;
+    private JButton updateButton3;
+    private JButton updateButton4;
+
+    String html_text;
+
 
     public void InitNavButtons() {
         startButton.addActionListener(new ActionListener() {
@@ -122,6 +128,7 @@ public class Resume {
             public void actionPerformed(ActionEvent e) {
                 certPane.setVisible(true);
                 skillsPane.setVisible(false);
+
             }
         });
         cert_backButton.addActionListener(new ActionListener() {
@@ -138,21 +145,93 @@ public class Resume {
                 finalPanel.setVisible(true);
             }
         });
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateHTML();
+            }
+        });
+        updateButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateHTML();
+            }
+        });
+        updateButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateHTML();
+            }
+        });
+        updateButton3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateHTML();
+            }
+        });
+        updateButton4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateHTML();
+            }
+        });
     }
 
     Resume() {
 
-        editorPane1.setEditable(false);
-        URL url= Resume.class.getResource("test.htm");
-
-            try {
-                editorPane1.setPage(url);
-            } catch(IOException e) {
-                editorPane1.setContentType("text/html");
-                editorPane1.setText("<html>Page not found.</html>");
-            }
+        editorPane1.setContentType("text/html");
+        updateHTML();
 
         InitNavButtons();
+
+
+    }
+    public void updateHTML()
+    {
+       String html_text = "<html>\n" +
+                "<head>\n" +
+                "<title>My First HTML Page</title>\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "<h1><center>"+ nameField.getText()+"</center></h1>\n" +
+               "<hr>" +
+                "<h2><center>"+ addressField.getText() + "      |       " +
+               phoneField.getText() + "       |       " + emailField.getText() + "</center></h2>" +
+               "<hr>" +
+               "<h2><center>Education</center><h2>" +
+
+               "<center><table border=\"0\"> \n" +
+               "  <tr> \n" +
+               "    <td>University </td> \n" +
+               "    <td>Degree</td> \n" +
+               "    <td>Major</td>" +
+               "  </tr> \n" +
+               "</table></center> " +
+               "<hr>" +
+               "<h2><center>Experience</center><h2>" +
+               "<center><table border=\"0\"> \n" +
+               "  <tr> \n" +
+               "    <td>Job1 </td> \n" +
+               "    <td>Job description </td> \n" +
+               "  </tr> \n" +
+               "  <tr> \n" +
+               "    <td>Job2 </td> \n" +
+               "    <td>Job description </td> \n" +
+               "  </tr> \n" +
+               "  <tr> \n" +
+               "    <td>Job3 </td> \n" +
+               "    <td>Job description</td> \n" +
+               "  </tr> \n" +
+               "</table></center> " +
+               "<hr>" +
+               "<h2><center>Skills</center><h2>" +
+               "<hr>" +
+               "<h2><center>Certifications</center><h2>" +
+
+               "</body>\n" +
+               "</html>";
+        editorPane1.setText(html_text);
+
     }
 
     public static JMenuBar initMenuBar() {
@@ -239,7 +318,9 @@ public class Resume {
         return mf;
     }
 
+
     public static void main(String[] args) {
+
         JFrame mainFrame = initMainFrame();
 
         JMenuBar topMenuBar = initMenuBar();
