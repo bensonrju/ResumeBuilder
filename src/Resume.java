@@ -60,7 +60,7 @@ public class Resume {
     private JScrollPane skillsScrollPane;
     private JScrollPane certScrollPane;
 
-    public void InitNavButtons() {
+    public void initNavButtons() {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -152,7 +152,7 @@ public class Resume {
                 editorPane1.setText("<html>Page not found.</html>");
             }
 
-        InitNavButtons();
+        initNavButtons();
     }
 
     public static JMenuBar initMenuBar() {
