@@ -1,6 +1,14 @@
+
+import com.aspose.pdf.HtmlLoadOptions;
+
 import javax.swing.*;
+import javax.swing.text.Document;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.lang.Object;
 
 
 public class Resume {
@@ -74,7 +82,7 @@ public class Resume {
     private JTextField job3start;
     private JTextField job3end;
 
-    String html_text;
+    static String html_text;
     String job1descparsed;
 
     String job2descparsed;
@@ -161,6 +169,7 @@ public class Resume {
             public void actionPerformed(ActionEvent e) {
                 certPane.setVisible(false);
                 finalPanel.setVisible(true);
+                printToHTML();
             }
         });
         updateButton.addActionListener(new ActionListener() {
@@ -250,7 +259,7 @@ parseTextArea();
         if(job3Field.getText().isEmpty())
             Job3 = "";
         //Html Format
-        String html_text = "<!DOCTYPE html>\n" +
+        html_text = "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
                 "<head>\n" +
                 "    <meta charset=\"UTF-8\">\n" +
@@ -296,14 +305,23 @@ parseTextArea();
 
 
     }
+    public static void printToHTML(){
+        File htmlFile = new File("user_resume.html");
+        String temp = html_text;
+        // Write the content to the file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(htmlFile))) {
+            writer.write(temp);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void parseTextArea()
     {
         String[] job1lines = job1desc.getText().split("\\r?\\n");
 
         // You can now process each line as needed
-        for (String line : job1lines) {
-            System.out.println(line); // For demonstration, we're just printing each line
-        }
+
         String temp = "";
         for(String line: job1lines)
         {
@@ -315,9 +333,6 @@ parseTextArea();
         String[] job2lines = job2desc.getText().split("\\r?\\n");
 
         // You can now process each line as needed
-        for (String line : job2lines) {
-            System.out.println(line); // For demonstration, we're just printing each line
-        }
         String temp2 = "";
         for(String line: job2lines)
         {
@@ -329,9 +344,6 @@ parseTextArea();
         String[] job3lines = job3desc.getText().split("\\r?\\n");
 
         // You can now process each line as needed
-        for (String line : job3lines) {
-            System.out.println(line); // For demonstration, we're just printing each line
-        }
         String temp3 = "";
         for(String line: job3lines)
         {
@@ -342,9 +354,7 @@ parseTextArea();
         String[] skillines = skills_textarea.getText().split("\\r?\\n");
 
         // You can now process each line as needed
-        for (String line : skillines) {
-            System.out.println(line); // For demonstration, we're just printing each line
-        }
+
         String temp4 = "";
         for(String line: skillines)
         {
@@ -355,16 +365,13 @@ parseTextArea();
         String[] certlines = cert_textarea.getText().split("\\r?\\n");
 
         // You can now process each line as needed
-        for (String line : certlines) {
-            System.out.println(line); // For demonstration, we're just printing each line
-        }
+
         String temp5 = "";
         for(String line: certlines)
         {
             temp5 = temp5 + "<li>" + line + "</li>\n";
         }
         certparsed = temp5;
-        System.out.println(certparsed);
         //Disable the skills and cert sections if there is no information
         if(skillsparsed.equals("<li></li>\n"))
             skillsparsed = "";
@@ -381,99 +388,76 @@ parseTextArea();
 
     }
 
-    public static JMenuBar initMenuBar() {
 
-    // Initialize Menu Bar
-        JMenuBar topMenuBar =new JMenuBar();
+     public static void main(String[] args) {
 
-
-    // 1- File Sub-Menu
-        JMenu fileMenu = new JMenu("File");
-
-        // Initialize File Sub-Menu Items
-        JMenuItem open =new JMenuItem("Open");
-        JMenuItem save =new JMenuItem("Save");
-
-        // Add Items to File Sub-Menu
-        fileMenu.add(open);
-        fileMenu.add(save);
-
-        // Add File Sub-Menu into Top Menu Bar
-        topMenuBar.add(fileMenu);
-
-
-    // 2 - Edit Sub-Menu
-        JMenu editMenu =new JMenu("Edit");
-
-        // Initialize Edit Sub-Menu Items
-        JMenuItem cut =new JMenuItem("Cut");
-        JMenuItem copy =new JMenuItem("Copy");
-        JMenuItem paste =new JMenuItem("Paste");
-
-        // Add Items to Edit Sub-Menu
-        editMenu.add(cut);
-        editMenu.add(copy);
-        editMenu.add(paste);
-
-        // Add Edit Sub-Menu into Top Menu Bar
-        topMenuBar.add(editMenu) ;
-
-
-    // 3 - View Sub-Menu
-        JMenu viewMenu =new JMenu("View");
-
-        // Initialize Sub-View Menu Items
-        JMenuItem param =new JMenuItem("Parameters Info");
-        JMenuItem type =new JMenuItem("Types Info");
-
-        // Add Items to View Sub-Menu
-        viewMenu.add(param);
-        viewMenu.add(type);
-
-        // Add View Sub-Menu into Top Menu Bar
-        topMenuBar.add(viewMenu);
-
-
-    // 4 - Help Sub-Menu
-        JMenu helpMenu =new JMenu("Help");
-
-        // Initialize Help Sub-Menu Items
-        JMenuItem register =new JMenuItem("Register");
-        JMenuItem about =new JMenuItem("About");
-        JMenuItem info =new JMenuItem("Info");
-
-        // Add Items to Help Sub-Menu
-        helpMenu.add(register);
-        helpMenu.add(about);
-        helpMenu.add(info);
-
-        // Add View Sub-Menu into Top Menu Bar
-        topMenuBar.add (helpMenu) ;
-
-        // Return MenuBar object
-        return topMenuBar;
-    }
-
-    public static JFrame initMainFrame() {
         JFrame mf = new JFrame("Resume Builder");
         mf.setContentPane((new Resume().mainPanel));
         mf.setBounds(200,200,500,500);
         mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mf.setSize(575,700);
-        mf.setVisible(true);
-
-        return mf;
-    }
 
 
-    public static void main(String[] args) {
+        //JMenuBar topMenuBar = initMenuBar();
+        // Initialize Menu Bar
+        JMenuBar topMenuBar =new JMenuBar();
 
-        JFrame mainFrame = initMainFrame();
 
-        JMenuBar topMenuBar = initMenuBar();
+        // 1- File Sub-Menu
+        JMenu fileMenu = new JMenu("File");
 
+        // Initialize File Sub-Menu Items
+        JMenuItem export =new JMenuItem("Export");
+        export.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                printToHTML();
+            }
+        });
+        JMenuItem close =new JMenuItem("Close");
+        close.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(mf.EXIT_ON_CLOSE);
+            }
+        });
+        // Add Items to File Sub-Menu
+        fileMenu.add(export);
+        fileMenu.add(close);
+
+        // Add File Sub-Menu into Top Menu Bar
+        topMenuBar.add(fileMenu);
+
+        // 4 - Help Sub-Menu
+        JMenu helpMenu =new JMenu("Help");
+
+        // Initialize Help Sub-Menu Items
+
+        JMenuItem about =new JMenuItem("About");
+        JMenuItem print =new JMenuItem("How to Print");
+        print.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "The program outputs a file called \" user_resume.html \". This can be converted into a pdf through an online converter such as https://products.aspose.app/html/en/conversion/html-to-pdf" );
+            }
+        });
+        about.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "This is a program to help you create resume and format it.");
+            }
+        });
+
+
+        // Add Items to Help Sub-Menu
+        helpMenu.add(about);
+        helpMenu.add(print);
+
+        // Add View Sub-Menu into Top Menu Bar
+        topMenuBar.add (helpMenu) ;
         // Adding the topMenuBar to our mainFrame
-        mainFrame.setJMenuBar(topMenuBar);
+        mf.setJMenuBar(topMenuBar);
+        mf.setVisible(true);
 
     }
 }
