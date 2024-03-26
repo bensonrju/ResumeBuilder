@@ -1,10 +1,13 @@
 
-import com.aspose.pdf.HtmlLoadOptions;
+//import com.aspose.pdf.HtmlLoadOptions;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.text.Document;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -53,6 +56,8 @@ public class Resume {
     private JEditorPane work_prev;
     private JEditorPane skil_prev;
     private JEditorPane finished_prev;
+
+    private JEditorPane phantomPane;
     private JLabel Skills;
     private JLabel titleLabel;
     private JPanel pers_prevPanel;
@@ -81,6 +86,7 @@ public class Resume {
     private JTextField job2end;
     private JTextField job3start;
     private JTextField job3end;
+    private JPanel phantomPanel;
 
     static String html_text;
     String job1descparsed;
@@ -90,7 +96,36 @@ public class Resume {
     String skillsparsed;
     String certparsed;
 
+    private static JEditorPane outputPane;
 
+    public static BufferedImage getScreenShot(Component comp) {
+        BufferedImage img = new BufferedImage(comp.getWidth(),
+                comp.getHeight(), BufferedImage.TYPE_INT_RGB);
+
+        comp.paint( img.getGraphics() );
+        return img;
+    }
+
+    public static void takeScreenShot(Component tp) {
+        BufferedImage outputImg = getScreenShot(tp);
+
+        ImageIcon outIcon = new ImageIcon(outputImg);
+
+        JOptionPane.showMessageDialog(null,
+                "Screen Output", "Screenshot",
+                JOptionPane.INFORMATION_MESSAGE, outIcon);
+
+        saveToFile(outputImg);
+    }
+
+    public static void saveToFile(BufferedImage img) {
+        try {
+            File outputfile = new File("Resume.png");
+            ImageIO.write(img, "png", outputfile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void InitNavButtons() {
         startButton.addActionListener(new ActionListener() {
@@ -208,24 +243,28 @@ public class Resume {
 
         //editorPane1.setContentType("text/html");
         //editorPane1.setContentType("text/html");
-
         personal_prev.setContentType("text/html");
         education_prev.setContentType("text/html");
         work_prev.setContentType("text/html");
         skil_prev.setContentType("text/html");
         cert_prev.setContentType("text/html");
         finished_prev.setContentType("text/html");
+        phantomPane.setContentType("text/html");
         updateHTML();
+
+        phantomPane.setBounds(0, 0, 600, 800);
 
         InitNavButtons();
 
+        outputPane = phantomPane;
 
     }
-    public void updateHTML()
-    {
-//Check all JtextAreas that need to be parsed to format data correctly
-parseTextArea();
-//String Variables that need to format parsed data
+    public void updateHTML() {
+
+    //Check all JTextAreas that need to be parsed to format data correctly
+        parseTextArea();
+
+    //String Variables that need to format parsed data
         String Job1 =   "            <h3>"+job1Field.getText()+"</h3>\n" +
         "            <p>"+job1start.getText() +"-"+job1end.getText()+"</p>\n" +
         "            <ul>\n" +
@@ -302,10 +341,11 @@ parseTextArea();
         skil_prev.setText(html_text);
         cert_prev.setText(html_text);
         finished_prev.setText(html_text);
+        phantomPane.setText(html_text);
 
 
     }
-    public static void printToHTML(){
+    public static void printToHTML() {
         File htmlFile = new File("user_resume.html");
         String temp = html_text;
         // Write the content to the file
@@ -316,8 +356,7 @@ parseTextArea();
         }
     }
 
-    public void parseTextArea()
-    {
+    public void parseTextArea() {
         String[] job1lines = job1desc.getText().split("\\r?\\n");
 
         // You can now process each line as needed
@@ -403,7 +442,7 @@ parseTextArea();
         JMenuBar topMenuBar =new JMenuBar();
 
 
-        // 1- File Sub-Menu
+     // 1- File Sub-Menu
         JMenu fileMenu = new JMenu("File");
 
         // Initialize File Sub-Menu Items
@@ -414,21 +453,31 @@ parseTextArea();
                 printToHTML();
             }
         });
-        JMenuItem close =new JMenuItem("Close");
+        JMenuItem close = new JMenuItem("Close");
         close.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(mf.EXIT_ON_CLOSE);
             }
         });
+
+        JMenuItem screenshot = new JMenuItem("Screenshot");
+        screenshot.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                takeScreenShot(outputPane);
+            }
+        });
+
         // Add Items to File Sub-Menu
         fileMenu.add(export);
         fileMenu.add(close);
+        fileMenu.add(screenshot);
 
         // Add File Sub-Menu into Top Menu Bar
         topMenuBar.add(fileMenu);
 
-        // 4 - Help Sub-Menu
+     // 2 - Help Sub-Menu
         JMenu helpMenu =new JMenu("Help");
 
         // Initialize Help Sub-Menu Items
